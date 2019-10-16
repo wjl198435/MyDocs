@@ -1,0 +1,9 @@
+```GET /api/camera_proxy/camera.<entity_id>
+  Returns the data (image) from the specified camera entity_id.
+  Sample curl command:
+$ curl -X GET -H "Authorization: Bearer ABCDEFGH" \
+       -H "Content-Type: application/json" \
+       http://localhost:8123/api/camera_proxy/camera.my_sample_camera?time=1462653861261 -o image.jpg
+
+ curl -X GET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZmYwODlhMzE5NjI0YTg3YWQ2NjgyY2NkM2I0MjBlMiIsImlhdCI6MTU1NTY1MjQzMywiZXhwIjoxODcxMDEyNDMzfQ.uzoJhPksrz0jlIJLwqvjwh8Xgf5t3NXP5yU0p1XC7Uk"        -H "Content-Type: application/json"        http://172.16.141.11:8123/api/camera_proxy/camera.ezviz?time=1555652875000 -o image.jpg
+```
