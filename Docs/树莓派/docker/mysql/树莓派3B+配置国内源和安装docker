@@ -1,0 +1,83 @@
+说明
+我的是3b+版本，系统版本是stretch,如下命令可以查看版本
+
+$ lsb_release -a
+结果如下：
+
+No LSB modules are available.
+Distributor ID:    Raspbian
+Description:    Raspbian GNU/Linux 9.4 (stretch)
+Release:    9.4
+Codename:    stretch
+我的系统体系结构是armhf,这是这下面安装docker的时候提示的，安装amd64报错了。
+设置树莓派国内源
+1.使用管理员权限修改/etc/apt/sources.list文件：
+
+$ sudo nano /etc/apt/sources.list
+用#注释掉原文件内容，添加以下内容：
+
+deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+2.使用管理员权限，编辑/etc/apt/sources.list.d/raspi.list文件
+
+$ sudo nano /etc/apt/sources.list.d/raspi.list
+用#注释掉原文件内容，添加以下内容：
+
+deb http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
+deb-src http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
+更新+验证
+apt-get update
+如果上面的命令执行没有再提示什么没找到什么什么的信息，并更新完成就说明上面配置管用，并配置成功了
+
+配置docker
+根据官网先做如下配置,运行如下命令
+
+$ sudo apt-get install \
+     apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common
+下一步
+
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+下一步
+
+sudo apt-key fingerprint 0EBFCD88
+接下来按照官网的配置docker的仓库，不起作用，就在网上找了手动下载的方法
+
+设置docker源
+
+echo "deb [arch=armhf] https://download.docker.com/linux/debian \
+     $(lsb_release -cs) stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list
+更新 安装
+
+sudo apt-get update
+sudo apt-get install docker-ce
+docker命令不加sudo
+如果还没有docker group就添加一个：
+sudo groupadd docker
+
+将用户加入该group内。然后退出并重新登录就生效啦。
+sudo gpasswd -a ${USER} docker
+
+重启docker
+sudo service docker restart
+
+
+
+
+
+
+错误1：
+   Client.Timeout exceeded while awaiting headers
+解决办法:
+    1.nano /etc/resolv.conf
+
+    nameserver 8.8.8.8
+    nameserver 8.8.4.4
+
+    2.sudo service docker restart
+
+    3.测试:docker run hello-world
