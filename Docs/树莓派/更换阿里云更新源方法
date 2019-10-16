@@ -1,0 +1,13 @@
+安装环境树莓派3，系统Raspbian-4.4.21。
+编辑 /etc/apt/sources.list 文件，这里推荐就用系统自带的 nano 命令编辑，命令如下：
+sudo nano /etc/apt/sources.list
+
+进入编辑界面，删除原有的内容，粘贴如下内容：
+deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib rpi
+deb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib rpi
+
+更新软件索引清单
+sudo apt-get update
+
+比较索引清单更新依赖关系
+sudo apt-get upgrade -y
