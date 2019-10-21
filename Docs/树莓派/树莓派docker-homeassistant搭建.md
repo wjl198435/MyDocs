@@ -43,7 +43,9 @@
      https://cr.console.aliyun.com/
     ```
   
-  
-  
+ ### mkdir /usr/local/share/GeoIP
+     下载：GeoLite2-Country_20191015.tar.gz
+     上传至:
+     geoip2 /usr/local/share/GeoIP/GeoLite2-Country.mmdb
     
     
