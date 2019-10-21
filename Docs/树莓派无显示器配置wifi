@@ -1,0 +1,16 @@
+在boot文件夹下面创建一个文件
+
+/boot/wpa_supplicant.conf
+1
+内容如下
+
+country=CN
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+ 
+network={
+ssid="你的WIFi的名字"
+psk="你的WIFI的密码"
+key_mgmt=WPA-PSK
+priority=1
+}
