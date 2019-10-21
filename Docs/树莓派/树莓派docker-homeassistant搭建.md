@@ -25,6 +25,23 @@
    
  ### 6. sudo docker-compose up   
    
+   
+### 7. docker 设置国内镜像源   
+    创建或修改 /etc/docker/daemon.json 文件，修改为如下形式
+    ```
+    # vi /etc/docker/daemon.json
+     {
+       "registry-mirrors": ["http://hub-mirror.c.163.com"]
+     }
+     
+     #systemctl restart docker.service
+
+     中国科技大学
+     https://docker.mirrors.ustc.edu.cn
+
+     阿里云容器  服务
+     https://cr.console.aliyun.com/
+    ```
   
   
   
