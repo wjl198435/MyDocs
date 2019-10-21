@@ -21,6 +21,10 @@
     
    pip 升级 
    pip3 install --upgrade pip
+   
+   
+ ### 6. sudo docker-compose up   
+   
   
   
   
