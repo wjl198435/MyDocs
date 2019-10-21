@@ -1,10 +1,10 @@
 安装环境树莓派3，系统Raspbian-4.4.21。
-编辑 /etc/apt/sources.list 文件，这里推荐就用系统自带的 nano 命令编辑，命令如下：
-sudo nano /etc/apt/sources.list
+# 编辑 `/etc/apt/sources.list` 文件，删除原文件所有内容，用以下内容取代：
+deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main non-free contrib
+deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main non-free contrib
 
-进入编辑界面，删除原有的内容，粘贴如下内容：
-deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main non-free contrib rpi
-deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main non-free contrib rpi
+# 编辑 `/etc/apt/sources.list.d/raspi.list` 文件，删除原文件所有内容，用以下内容取代：
+deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch main ui
 
 更新软件索引清单
 sudo apt-get update
