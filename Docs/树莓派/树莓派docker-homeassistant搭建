@@ -4,3 +4,8 @@
 
 ### 3.docker 安装:
     http://shumeipai.nxez.com/2019/05/20/how-to-install-docker-on-your-raspberry-pi.html
+    
+    sudo apt-get update
+    sudo apt-get install -y python python-pip
+    sudo pip install docker-compose
+    
