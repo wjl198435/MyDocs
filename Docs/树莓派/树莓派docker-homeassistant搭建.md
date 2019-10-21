@@ -10,6 +10,10 @@
     sudo apt-get install -y python python-pip
     sudo pip install docker-compose
 ### 5.python 升级
+   https://www.jianshu.com/p/61b3119ab3f5 (简单)
    https://blog.csdn.net/panwen1111/article/details/88363771
+  
+  
+  
     
     
