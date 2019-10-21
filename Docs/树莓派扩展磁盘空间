@@ -1,0 +1,5 @@
+使用树莓派自建的工具可以快速将树莓派挂载所有的SD卡空间。
+
+命令行输入：sudo raspi-config
+
+然后在选择Advancd Options -> Expand Filesystem
