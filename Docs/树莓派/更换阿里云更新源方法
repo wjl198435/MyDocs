@@ -3,8 +3,8 @@
 sudo nano /etc/apt/sources.list
 
 进入编辑界面，删除原有的内容，粘贴如下内容：
-deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib rpi
-deb-src http://mirrors.aliyun.com/raspbian/raspbian/ jessie main non-free contrib rpi
+deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main non-free contrib rpi
+deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main non-free contrib rpi
 
 更新软件索引清单
 sudo apt-get update
