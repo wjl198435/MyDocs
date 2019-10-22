@@ -3,11 +3,11 @@
 ### 2.sudo apt-get install ffmpeg
 
 ### 3.docker 安装:
-    http://shumeipai.nxez.com/2019/05/20/how-to-install-docker-on-your-raspberry-pi.html
+   http://shumeipai.nxez.com/2019/05/20/how-to-install-docker-on-your-raspberry-pi.html
     
 ### 4. docker-compose安装
 
-    https://www.jianshu.com/p/ba92c1f09aa8
+   https://www.jianshu.com/p/ba92c1f09aa8
     
     sudo apt-get update
     sudo apt-get install -y python python-pip
@@ -22,9 +22,14 @@
    
    https://blog.csdn.net/panwen1111/article/details/88363771
     
-   pip 升级 
-   pip3 install --upgrade pip
+    pip 升级 
+    pip3 install --upgrade pip
    
+    2、安装pip3.6
+
+   wget https://bootstrap.pypa.io/get-pip.py
+
+    sudo python3.6 get-pip.py
    
  ### 6. sudo docker-compose up   
    
