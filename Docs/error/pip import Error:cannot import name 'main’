@@ -1,0 +1,27 @@
+import Error:cannot import name 'main’
+
+解决方案:
+
+1.找到对应的pip文件,修改部分代码,文件目录位置 usr/bin/
+2.以管理员身份进行修改: sudo vi pip
+3.修改代码:
+把下面的三行
+
+from pip import main
+if __name__ == '__main__':
+    sys.exit(main())
+1
+2
+3
+换成下面三行:
+
+from pip import __main__
+if __name__ == '__main__':
+    sys.exit(__main__._main())
+1
+2
+3
+然后就大功告成啦．
+————————————————
+版权声明：本文为CSDN博主「CYNH525」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_39980136/article/details/86995833
