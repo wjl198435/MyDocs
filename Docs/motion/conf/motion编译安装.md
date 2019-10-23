@@ -15,5 +15,8 @@ Once required packages are installed, execute:
 
 Sample custom configuration options:
     --prefix               :  Specify the install location for the motion package
-    --with-ffmpeg=[dir]    :  Specify the location in which ffmpeg/libav is installed.
+    --with-ffmpeg=[dir]    :  Specify the location in which ffmpeg/libav is installed
     ```
+
+使用:
+   sudo  motion -c /usr/local/etc/motion/motion-dist.conf 
