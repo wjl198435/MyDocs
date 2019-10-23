@@ -41,7 +41,7 @@
     mosquitto_sub -h test.mosquitto.org -t "#" -v    
     
 ### 4. 创建用户名及密码 (https://mosquitto.org/man/mosquitto_passwd-1.html)
-    1.sudo  mosquitto_passwd -c /etc/mosquitto/passwd ral
+    1.sudo  mosquitto_passwd -c /etc/mosquitto/passwd[/etc/mosquitto/pwfile] user
 ### 5.  mosquitto_passwd -c /etc/mosquitto/mosquitto.conf 
     带密码访问：
     mosquitto_sub -u demo -P demo -h localhost -t "mqtt" -v 
