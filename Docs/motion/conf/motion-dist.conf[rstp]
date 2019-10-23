@@ -55,10 +55,10 @@ database_password admin
 ############################################################
 
 # Image width in pixels.
-width 640
+width 1280
 
 # Image height in pixels.
-height 480
+height 720
 
 # Maximum number of frames to be captured per second.
 framerate 15
@@ -126,7 +126,8 @@ picture_filename %Y%m%d%H%M%S-%q
 
 # Create movies of motion events.
 movie_output off
-
+movie_output_motion off
+movie_passthrough off
 # Maximum length of movie in seconds.
 movie_max_time 60
 
