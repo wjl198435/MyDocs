@@ -20,3 +20,9 @@ Sample custom configuration options:
 
 使用:
    sudo  motion -c /usr/local/etc/motion/motion-dist.conf 
+   
+   
+/etc/systemd/system/motion.service
+sudo systemctl daemon-reload
+sudo systemctl enable motion.service --now
+sudo systemctl start motion.service   
