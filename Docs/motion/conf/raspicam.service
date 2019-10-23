@@ -1,0 +1,13 @@
+[Unit]  
+Description=motion
+After=network.target  
+   
+[Service]  
+Type=forking  
+ExecStart=/usr/bin/motion -c /usr/local/etc/motion/my_motion.conf
+#ExecReload=  
+#ExecStop=/usr/local/soft/tomcat/tomcat8/bin/shutdown.sh  
+PrivateTmp=true  
+   
+[Install]  
+WantedBy=multi-user.target  
