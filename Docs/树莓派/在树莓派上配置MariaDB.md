@@ -71,7 +71,7 @@ FLUSH PRIVILEGES;
 
 
 
-## Error：
+## Error解救办法：
 全代码解决方案
 1.运行bash命令
 ```
