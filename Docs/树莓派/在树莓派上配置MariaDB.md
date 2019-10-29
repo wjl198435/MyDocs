@@ -67,3 +67,27 @@ FLUSH PRIVILEGES;
 ```
 
 至此可从外部连接到树莓派上的MariaDB了
+
+
+
+
+## Error：
+全代码解决方案
+1.运行bash命令
+```
+# 1. first, run these bash commands
+sudo /etc/init.d/mysql stop # stop mysql service
+sudo mysqld_safe --skip-grant-tables & # start mysql without password
+# enter -> go
+mysql -uroot # connect to mysql
+```
+2.然后运行mysql命令=>手动将其粘贴到cli
+```
+use mysql; # use mysql table
+update user set authentication_string=PASSWORD("") where User='root'; # update password to nothing
+update user set plugin="mysql_native_password" where User='root'; # set password resolving to default mechanism for root user
+
+flush privileges;
+quit;
+```
+  
