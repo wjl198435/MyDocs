@@ -1,0 +1,2 @@
+1.ubuntu 进入图形界面:
+   sudo lightdm start
