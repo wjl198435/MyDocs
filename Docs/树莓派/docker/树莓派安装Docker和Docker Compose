@@ -1,0 +1,17 @@
+Linux 中的 Docker 和 Docker Compose 是需要分别安装的。
+
+1. Docker 安装
+
+curl -sSL https://get.docker.com| sh
+默认情况下执行docker命令是需要root权限的，也就是要用sudo docker 来运行。
+
+一下方法可以免去sudo执行，重启生效：
+
+sudo usermod -aG docker pi && sudo reboot
+2. Docker Compose 安装
+
+Docker Compose的安装方法有很多，下面这个用pip安装的树莓派方法亲测可用
+
+sudo apt-get update
+sudo apt-get install -y python python-pip
+sudo pip install docker-compose
