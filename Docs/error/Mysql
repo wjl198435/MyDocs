@@ -1,0 +1,16 @@
+错误：1.grafana commands out of sync
+    (panic: commands out of sync. Did you run multiple statements at once)
+    2.pymysql.err.InternalError
+    
+解决办法：
+   最后找到的解决方法是在 my.cnf 里面的 [mysqld] 段增加一个启动参数
+
+    复制代码 代码如下:
+    skip-name-resolve
+
+    sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+    [mysqld]
+    skip-name-resolve
+    sudo systemctl restart mysqld.service
+    
+    
