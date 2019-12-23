@@ -2,3 +2,185 @@
    https://downloads.raspberrypi.org/raspbian/images/raspbian-2019-09-30/2019-09-26-raspbian-buster.zip
 2.格式化SDCard
   打开应用:SD Card Fomater 
+3.balenaEtcher
+   选择映像文件安装
+4.配置wifi
+ 在boot文件夹下面创建一个文件 /boot/wpa_supplicant.conf
+   内容如下
+
+country=CN
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+ 
+network={
+ssid="你的WIFi的名字"
+psk="你的WIFI的密码"
+key_mgmt=WPA-PSK
+priority=1
+}
+
+5.开启ssh
+只需要在boot下(SD卡根目录)载创建一个ssh文件即可(只是单纯的文件,用于标识启动ssh); 系统启动后会自动开启ssh服务
+
+6.更换国内源
+6.1 sudo nano /etc/apt/sources.list
+
+#deb http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
+# Uncomment line below then 'apt-get update' to enable 'apt-get source'
+#deb-src http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
+deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
+deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
+
+6.2 sudo nano /etc/apt/sources.list.d/raspi.list
+
+#deb https://mirrors.ustc.edu.cn/archive.raspberrypi.org/ buster main ui
+# Uncomment line below then 'apt-get update' to enable 'apt-get source'
+#deb http://archive.respberrypi.org/debian/ buster main ui
+#deb-src http://archive.raspberrypi.org/debian/ buster main ui
+deb http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
+deb-src http://mirror.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
+
+6.3 sudo apt-get update
+
+（0可选）
+ 扩展文件系统
+ sudo raspi-config -> 7 Advanced Options -> A1 Expand filesystem -> sudo reboot
+ 
+ 
+  >>>>>>>>>>>>>>>>>>>>>安装opencv<<<<<<<<<<<<<<<<<<<<
+7 .安装opencv
+   7.1.Make sure that the Raspberry Pi is updated.
+   sudo apt-get update
+   sudo apt-get upgrade
+   sudo rpi-update
+   sudo reboot
+   
+   7.2 (卸载不要应用)deleting both Wolfram Engine and LibreOffice to reclaim ~1GB of space on your Raspberry Pi
+  
+   $ sudo apt-get purge wolfram-engine
+   $ sudo apt-get purge libreoffice*
+   $ sudo apt-get clean
+   $ sudo apt-get autoremove
+   
+   7.3 安装依赖
+   
+   sudo apt-get update && sudo apt-get upgrade
+   
+   sudo apt-get install build-essential cmake pkg-config -y
+   
+   sudo apt-get install libjpeg-dev libtiff5-dev libjasper-dev libpng-dev -y
+   
+   sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev -y
+   sudo apt-get install libxvidcore-dev libx264-dev -y
+   
+   sudo apt-get install libfontconfig1-dev libcairo2-dev -y
+   sudo apt-get install libgdk-pixbuf2.0-dev libpango1.0-dev -y
+   sudo apt-get install libgtk2.0-dev libgtk-3-dev -y
+   
+   sudo apt-get install libatlas-base-dev gfortran -y
+
+   
+   sudo apt-get install libhdf5-dev libhdf5-serial-dev libhdf5-103 -y
+   sudo apt-get install libqtgui4 libqtwebkit4 libqt4-test python3-pyqt5 -y 
+   
+   sudo apt-get install python3-dev -y
+   
+    7.4 获取opencv opencv_contrib 源文件
+     wget -O opencv.zip https://github.com/opencv/opencv/archive/4.1.1.zip
+     wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.1.1.zip
+     mkdir opencv_build
+    mv opencv-4.1.1 opencv_build/opencv 
+    mv opencv_contrib-4.1.1 opencv_build/opencv_contrib
+   
+   7.5 Increasing your SWAP space
+   
+   sudo nano /etc/dphys-swapfile
+   CONF_SWAPSIZE=2048
+   
+   sudo /etc/init.d/dphys-swapfile stop
+   sudo /etc/init.d/dphys-swapfile start
+   
+   8.Compile and install OpenCV 4 on Raspbian Buster
+   
+   8.1
+   pip3 install numpy  
+   
+   8.2 build opencv
+   cd ~/opencv_build/opencv 
+   mkdir build
+   cd build
+   cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    -D CMAKE_INSTALL_PREFIX=/usr/local \
+    -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+    -D ENABLE_NEON=ON \
+    -D ENABLE_VFPV3=ON \
+    -D BUILD_TESTS=OFF \
+    -D INSTALL_PYTHON_EXAMPLES=OFF \
+    -D OPENCV_ENABLE_NONFREE=ON \
+    -D CMAKE_SHARED_LINKER_FLAGS=-latomic \
+    -D BUILD_EXAMPLES=OFF ..
+   8.3 make
+   8.4 sudo make install
+   8.5 sudo ldconfig
+   
+ (9 可选).Reset your SWAP
+    nano /etc/dphys-swapfile
+    CONF_SWAPSIZE = 100MB
+    sudo /etc/init.d/dphys-swapfile stop
+    sudo /etc/init.d/dphys-swapfile start
+    
+  10. Testing your OpenCV 4 Raspberry Pi BusterOS install  
+    
+  $ cd ~
+  $ workon cv
+  $ python
+  >>> import cv2
+  >>> cv2.__version__
+  '4.1.1'
+  >>>
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>安装tensoflow<<<<<<<<<<<<<<<<<<<<<<<<<<
+Python 3.x + Tensorflow v2 series
+具体请查看:
+https://github.com/wjl198435/Tensorflow-raspberry-buster-ok
+
+1. 安装 tensorflow
+$ sudo apt-get install -y libhdf5-dev libc-ares-dev libeigen3-dev
+$ sudo pip3 install keras_applications==1.0.7 --no-deps
+$ sudo pip3 install keras_preprocessing==1.0.9 --no-deps
+$ sudo pip3 install h5py==2.9.0
+$ sudo apt-get install -y openmpi-bin libopenmpi-dev
+$ sudo apt-get install -y libatlas-base-dev
+$ pip3 install -U --user six wheel mock
+$ sudo apt update;sudo apt upgrade
+$ wget https://github.com/PINTO0309/Tensorflow-bin/raw/master/tensorflow-2.0.0b1-cp35-cp35m-linux_armv7l.whl
+$ sudo pip3 uninstall tensorflow
+$ sudo -H pip3 install tensorflow-2.0.0b1-cp35-cp35m-linux_armv7l.whl
+
+【Required】 Restart the terminal.
+
+
+2.Operation check
+
+Example of Python 3.x series
+
+$ python3
+>>> import tensorflow
+>>> tensorflow.__version__
+1.14.0
+>>> exit()
+
+3.Sample of MultiThread x4
+
+Preparation of test environment
+$ cd ~;mkdir test
+$ curl https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/lite/examples/label_image/testdata/grace_hopper.bmp > ~/test/grace_hopper.bmp
+$ curl https://storage.googleapis.com/download.tensorflow.org/models/mobilenet_v1_1.0_224_frozen.tgz | tar xzv -C ~/test mobilenet_v1_1.0_224/labels.txt
+$ mv ~/test/mobilenet_v1_1.0_224/labels.txt ~/test/
+$ curl http://download.tensorflow.org/models/mobilenet_v1_2018_02_22/mobilenet_v1_1.0_224_quant.tgz | tar xzv -C ~/test
+$ cp tensorflow/tensorflow/contrib/lite/examples/python/label_image.py ~/test
+
+
+
+
+    
