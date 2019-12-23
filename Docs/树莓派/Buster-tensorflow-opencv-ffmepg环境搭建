@@ -196,8 +196,12 @@ tar -xf glibc-2.30.tar
 mkdir build
 cd build
 ../configure  --prefix=$HOME/local
+(报错 missing or too old)：sudo apt-get install gawk bsion
 make
 make install
+ 
+最后 
+export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH  
 
 
     
