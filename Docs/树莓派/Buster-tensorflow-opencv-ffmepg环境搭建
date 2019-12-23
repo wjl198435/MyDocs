@@ -183,4 +183,18 @@ $ cp tensorflow/tensorflow/contrib/lite/examples/python/label_image.py ~/test
 
 
 
+ERROR:
+1. ImportError: /lib/arm-linux-gnueabihf/libm.so.6: version `GLIBC_2.29' not found
+
+wget https://mirror.us-midwest-1.nexcess.net/gnu/libc/glibc-2.29.tar.xz
+
+xz -d glibc-2.30.tar.xz
+tar -xf glibc-2.30.tar
+mkdir build
+cd build
+../configure  --prefix=$HOME/local
+make
+make install
+
+
     
