@@ -263,6 +263,9 @@ framebuffer_depth=16
   
   
 方案二: 脚本自动化安装:
+使用 aptitude 安装包解决包依赖问题
+sudo apt-get install aptitude
+
  update-ffmpeg-rpi.sh
  、、、
  #!/bin/bash
@@ -286,7 +289,7 @@ mkdir -p ~/ffmpeg_build
 
 #Build Tools
 echo "Installing various tools and packages, including audio-video codecs, required for building FFmpeg"
-sudo apt-get -y install \
+sudo aptitude -y install \
   autoconf \
   automake \
   build-essential \
@@ -479,12 +482,12 @@ echo "FFmpeg and Codec Installation Complete"
  ERROR: chromaprint not found
  
  解决办法：
-  sudo apt-get install libchromaprint-dev
+  sudo aptitude install libchromaprint-dev
   
  错误：
  ERROR: frei0r.h dlfcn.h not found
  解决：
- sudo apt-get install frei0r-plugins-dev
+ sudo aptitude install frei0r-plugins-dev
 
 错误:
 E: Unable to locate package libfdk-aac-dev
@@ -497,7 +500,7 @@ $nano /etc/apt/sources.list
 deb http://www.deb-multimedia.org buster main non-free
 $sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 5C808C2B65558117
 $ sudo apt-get update
-$ sudo apt-get -y install libfdk-aac-dev libkvazaar-dev libopenh264-dev libzimg-dev
-  
+$ sudo aptitude -y install libfdk-aac-dev libkvazaar-dev libopenh264-dev libzimg-dev 
+  sudo aptitude -y install  libssl1.0-dev
   
   
