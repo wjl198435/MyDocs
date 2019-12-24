@@ -201,7 +201,26 @@ make
 make install
  
 最后 
-export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH  
+export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH 
 
+nano /etc/profile
+export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH 
 
-    
+>>>>>>>>>>>>>>>>>>>>>raspberry ffmepg<<<<<<<<<<<<<<<<
+1.准备配置
+/boot/config.txt
+
+gpu_mem=256
+framebuffer_depth=16
+
+2.准备 FFmpeg
+  apt-get install autoconf automake build-essential libass-dev libfreetype6-dev  libtheora-dev libtool libvorbis-dev pkg-config texinfo zlib1g-dev unzip cmake yasm libx264-dev libmp3lame-dev libopus-dev libbz2-dev
+
+3.I. 编译安装 x264
+    git clone https://github.com/mirror/x264.git
+    cd x264/
+    # git checkout 72d53ab2ac7af24597a824e868f2ef363a22f5d4
+    ./configure --disable-asm --enable-shared --disable-win32thread --enable-strip --extra-cflags='-march=armv7-a -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard'
+    make -j 4 V=1
+    make install
+    ldconfig
