@@ -474,4 +474,15 @@ sudo ldconfig
 
 echo "FFmpeg and Codec Installation Complete"
  、、、
+ 
+ 错误：
+ ERROR: chromaprint not found
+ 
+ 解决办法：
+  sudo apt-get install libchromaprint-dev
+  
+ 错误：
+ ERROR: frei0r.h dlfcn.h not found
+ 解决：
+ sudo apt-get install frei0r-plugins-dev
 
