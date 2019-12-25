@@ -55,6 +55,9 @@ defaults,user,auto,noatime,intr 0 0 : 配置参数
 
 sudo service nfs-common start
 
+手动挂载:
+sudo mount -a  (挂载fstab中内容)
+
 挂载
 sudo mount -t nfs -o nolock -o tcp 192.168.8.106:/rpi_nfs /media/nfs（如果不需要自动挂载，只需要每次执行这样命令即可）
 
@@ -82,6 +85,5 @@ $ file /lib/systemd/system/nfs-common.service
  $ sudo systemctl enable nfs-common
  
  
-
 
 
