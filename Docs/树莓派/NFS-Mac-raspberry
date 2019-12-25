@@ -16,6 +16,21 @@
  sudo nano /etc/exports
  /rpi_nfs -alldirs -rw -network 192.168.0.0 -mask 255.255.0.0
  
+ 修改配置后使用sudo nfsd checkexports进行检查。
+ sudo nfsd checkexports
+ 
+sudo nfsd enable
+
+sudo nfsd disable
+
+sudo nfsd start
+
+sudo nfsd stop
+
+sudo nfsd restart
+
+sudo nfsd status
+ 
  测试
  showmount -e localhost
  
