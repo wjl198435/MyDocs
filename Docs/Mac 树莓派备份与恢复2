@@ -13,6 +13,10 @@ diskutil list
 sudo dd if=/dev/rdiskx bs=1m | gzip > /path/to/backupImage.gz
 #将“/dev/rdiskx ”改成您 Micro SD 卡的所在位置， if 參數是指定資料來源 (也就是 Micro #SD 卡)   of 則是指定備份影像檔的儲存路徑與檔案名稱 
 
+例如:
+cd ~Downloads/Raspberry
+sudo dd if=/dev/rdisk2 bs=1m | gzip > 2019-09-26-raspbian-buster-tf2.0.1-opencv4.1.2-ffmpeg4.1.4-nfs.gz
+
 4.恢复系统
 
 ★ 將壓縮的備份影像檔回復至 Micro SD 卡中
