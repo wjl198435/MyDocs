@@ -206,7 +206,13 @@ export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
 nano /etc/profile
 export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH 
 
+
+
 >>>>>>>>>>>>>>>>>>>>>raspberry ffmepg<<<<<<<<<<<<<<<<
+包安装
+1.sudo apt-get ffmepg
+
+源码安装:
 参考链接:https://holmesian.org/Raspberry-Pi-optimized-FFmpeg-with-HW-Acceleration
 1.准备配置
 /boot/config.txt
