@@ -36,6 +36,9 @@ sudo nfsd status
  
  sudo mount -t nfs -o nolock,nfsvers=3,vers=3 192.168.8.106:/rpi_nfs /Users/wangjinliang/Work
  
+ 卸载
+sudo umount  /Users/wangjinliang/Work
+ 
  
  1.2 raspberry
  博文链接:https://blog.csdn.net/u013165704/article/details/72427826
@@ -52,7 +55,11 @@ defaults,user,auto,noatime,intr 0 0 : 配置参数
 
 sudo service nfs-common start
 
+挂载
 sudo mount -t nfs -o nolock -o tcp 192.168.8.106:/rpi_nfs /media/nfs（如果不需要自动挂载，只需要每次执行这样命令即可）
+
+卸载
+sudo umount  /media/nfs. 
 完毕
 
 
