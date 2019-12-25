@@ -1,4 +1,5 @@
 1. nfsd配置文件
+博文链接:https://lizhiyong2000.github.io/2019/03/30/mac中配置nfs-server/
 
 1.1Mac NFS-Server
  
@@ -15,7 +16,14 @@
  sudo nano /etc/exports
  /test -alldirs -rw -network 192.168.0.0 -mask 255.255.0.0
  
+ 测试
+ showmount -e localhost
+ 
+ sudo mount -t nfs -o nolock,nfsvers=3,vers=3 192.168.8.106:/test /Users/wangjinliang/Work
+ 
+ 
  1.2 raspberry
+ 博文链接:https://blog.csdn.net/u013165704/article/details/72427826
  
  sudo vi /etc/fstab:
  
@@ -34,7 +42,7 @@ sudo mount -t nfs -o nolock -o tcp 192.168.8.106:/test /media/nfs（如果不需
 
 
 ERROR：
-（https://blog.ruanbekker.com/blog/2017/12/09/unmask-a-masked-service-in-systemd/）
+博文链接（https://blog.ruanbekker.com/blog/2017/12/09/unmask-a-masked-service-in-systemd/）
 Failed to start nfs-common.service: Unit nfs-common.service is masked.
 
 $ file /lib/systemd/system/nfs-common.service
