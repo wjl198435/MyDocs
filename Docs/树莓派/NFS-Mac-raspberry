@@ -14,12 +14,12 @@
  
  我的配置:
  sudo nano /etc/exports
- /test -alldirs -rw -network 192.168.0.0 -mask 255.255.0.0
+ /rpi_nfs -alldirs -rw -network 192.168.0.0 -mask 255.255.0.0
  
  测试
  showmount -e localhost
  
- sudo mount -t nfs -o nolock,nfsvers=3,vers=3 192.168.8.106:/test /Users/wangjinliang/Work
+ sudo mount -t nfs -o nolock,nfsvers=3,vers=3 192.168.8.106:/rpi_nfs /Users/wangjinliang/Work
  
  
  1.2 raspberry
@@ -27,17 +27,17 @@
  
  sudo vi /etc/fstab:
  
- 192.168.8.106:/test /media/nfs nfs  _netdev,defaults,user,auto,noatime,intr   0 0
+ 192.168.8.106:/rpi_nfs /media/nfs nfs  _netdev,defaults,user,auto,noatime,intr   0 0
  参数说明
- 192.168.X.X : 为Server Ubuntu的IP地址 
-/mnt/nfs : 为Ubuntu 需要共享的目录
+ 192.168.X.X : 为Mac的IP地址 
+/rpi_nfs : 为Mack 需要共享的目录
 /media/nfs : 为在树莓派中创建的目录
 nfs : NFS文件系统
 defaults,user,auto,noatime,intr 0 0 : 配置参数
 
 sudo service nfs-common start
 
-sudo mount -t nfs -o nolock -o tcp 192.168.8.106:/test /media/nfs（如果不需要自动挂载，只需要每次执行这样命令即可）
+sudo mount -t nfs -o nolock -o tcp 192.168.8.106:/rpi_nfs /media/nfs（如果不需要自动挂载，只需要每次执行这样命令即可）
 完毕
 
 
