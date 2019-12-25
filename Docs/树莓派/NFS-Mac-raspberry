@@ -1,0 +1,57 @@
+1. nfsd配置文件
+
+1.1Mac NFS-Server
+ 
+ 编辑/etc/exports文件：
+
+ V4: / -sec=sys
+/opt/data/k8s -alldirs  -maproot=root:wheel -network=192.168.0.0 -mask=255.255.0.0
+ 参数说明
+ 默认为可读写，加入 -ro 为只读 readonly
+ -alldirs 是共享 /Users 目录下所有文件
+ -network -mask 制定工作在那个网段内
+ 
+ 我的配置:
+ sudo nano /etc/exports
+ /test -alldirs -rw -network 192.168.0.0 -mask 255.255.0.0
+ 
+ 1.2 raspberry
+ 
+ sudo vi /etc/fstab:
+ 
+ 192.168.8.106:/test /media/nfs nfs  _netdev,defaults,user,auto,noatime,intr   0 0
+ 参数说明
+ 192.168.X.X : 为Server Ubuntu的IP地址 
+/mnt/nfs : 为Ubuntu 需要共享的目录
+/media/nfs : 为在树莓派中创建的目录
+nfs : NFS文件系统
+defaults,user,auto,noatime,intr 0 0 : 配置参数
+
+sudo service nfs-common start
+
+sudo mount -t nfs -o nolock -o tcp 192.168.8.106:/test /media/nfs（如果不需要自动挂载，只需要每次执行这样命令即可）
+完毕
+
+
+ERROR：
+（https://blog.ruanbekker.com/blog/2017/12/09/unmask-a-masked-service-in-systemd/）
+Failed to start nfs-common.service: Unit nfs-common.service is masked.
+
+$ file /lib/systemd/system/nfs-common.service
+/lib/systemd/system/nfs-common.service: symbolic link to /dev/null
+
+ $ sudo rm /lib/systemd/system/nfs-common.service
+ 
+ $ sudo systemctl daemon-reload
+ 
+ $sudo systemctl status nfs-common
+ 
+ $ sudo systemctl start nfs-common
+ $ sudo systemctl status nfs-common
+ 
+ $ sudo systemctl enable nfs-common
+ 
+ 
+
+
+
