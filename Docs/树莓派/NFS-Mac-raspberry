@@ -66,6 +66,13 @@ sudo umount  /media/nfs.
 完毕
 
 
+3.ubuntu-client
+1.sudo apt-get install nfs-common
+2.mkdir /home/homeassistant
+3.mount -t nfs 192.168.8.106:/rpi_nfs /home/homeassistant
+6.将mount -t nfs 192.168.8.106:/rpi_nfs /home/homeassistant 添加到/etc/profile，开机就会自动挂载了
+
+
 ERROR：
 博文链接（https://blog.ruanbekker.com/blog/2017/12/09/unmask-a-masked-service-in-systemd/）
 Failed to start nfs-common.service: Unit nfs-common.service is masked.
