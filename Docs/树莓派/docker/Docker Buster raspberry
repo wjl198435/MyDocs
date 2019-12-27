@@ -1,3 +1,11 @@
+1.sudo apt-get install \apt-transport-https \ca-certificates \curl \gnupg2 \software-properties-common
+2.curl -fsSL https://download.docker.com/linux/raspbian/gpg | sudo apt-key add -
+3.echo "deb [arch=armhf] https://download.docker.com/linux/raspbian buster stable" | \sudo tee /etc/apt/sources.list.d/docker.list
+4.sudo apt-get update
+5.sudo apt-get install docker-ce
+
+
+
 Linux 中的 Docker 和 Docker Compose 是需要分别安装的。
 
 1. Docker 安装
