@@ -1,0 +1,9 @@
+# 重置源配置
+conda config --remove-key channels 
+# 重新添加清华源
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ 
+conda config --set show_channel_urls yes
+# 查看效果
+cat ~/.condarc
