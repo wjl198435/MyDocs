@@ -1,7 +1,10 @@
 1.conda create --name CenterNet3.6 python=3.6
 2.conda activate CenterNet3.6
 3.conda install pytorch==1.2.0 torchvision==0.4.0 cudatoolkit=10.0
+
+  conda create --name centernet3.6_torch1.4  python=3.6
   conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit=10.1
+  conda activate CenterNet3.6_torch1.4
 
 4.cat ~/.condarc 
 show_channel_urls: true
