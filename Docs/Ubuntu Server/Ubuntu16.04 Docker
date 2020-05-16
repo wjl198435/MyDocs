@@ -8,6 +8,4 @@ sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/li
 # Step 4: 更新并安装 Docker-CE
 sudo apt-get -y update
 sudo apt-get -y install docker-ce
-————————————————
-版权声明：本文为CSDN博主「冰_封」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/xie1xiao1jun/java/article/details/79413436
+sudo docker version
