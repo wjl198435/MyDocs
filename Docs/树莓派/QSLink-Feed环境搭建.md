@@ -19,17 +19,31 @@ priority=1
    创建ssh 空文件
 ## 4.安装docker docker-compose
 ```
-curl -sL get.docker.com|sh
-sudo usermod -aG docker pi
+curl -sL get.docker.com|sh#######
+sudo usermod -aG docker pi######
 
 安装pip
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py 
-sudo apt install -y  libffi-dev python-backports.ssl-match-hostname
+sudo apt install -y libssl-dev python3-dev libffi-dev python-backports.ssl-match-hostname
+ 
 sudo apt-get install python3-distutils
 sudo python3 get-pip.py
 pip --version
+
 sudo pip install docker-compose
 
+ ###pip install homeassistant###
+``` 
+## Updating Docker
+ To update docker you can simply run the install again.
 
-```
+ sudo /etc/init.d/docker stop
+ curl -sL get.docker.com|sh
+## Updating Docker Compose (docker-compose)
+ sudo apt install --upgrade python python-pip libffi-dev python-backports.ssl-match-hostname
+ sudo pip install --upgrade docker-compose 
+
+
+
+
    
