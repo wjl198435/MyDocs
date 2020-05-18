@@ -44,6 +44,48 @@ sudo pip install docker-compose
  sudo pip install --upgrade docker-compose 
 
 
+## 创建docker-compose.yml
+```
+version: '3.7'
+  services:
+    homeassistant:
+      container_name: homeassistant
+      image: homeassistant/raspberrypi4-homeassistant:latest
+      network_mode: "host"
+      ports:
+        - "8123:8123"
+      volumes:
+        - /opt/homeassistant:/config
+        - /etc/localtime:/etc/localtime:ro
+        - /etc/letsencrypt:/etc/letsencrypt:ro
+      devices:
+        - /dev/ttyACM0:/dev/ttyACM0:rwm
+      restart: always
+      healthcheck:
+        test: ["CMD", "curl", "-f", "http://127.0.0.1:8123"]
+        interval: 30s
+        timeout: 10s
+        retries: 6
+```
 
-
+## Create the following file for automating the service on startup
+      /etc/systemd/system/home-assistant.service
+```
+[Unit]
+Description=Home Assistant Service
+Requires=docker.service
+After=docker.service
+[Service]
+WorkingDirectory=/root
+ExecStart=/usr/local/bin/docker-compose up
+ExecStop=/usr/local/bin/docker-compose down
+             
+TimeoutStartSec=0
+Restart=on-failure
+StartLimitInterval
+```
    
+### 
+  Run this systemctl enable home-assistant.service
+### 
+  Run this systemctl enable docker
