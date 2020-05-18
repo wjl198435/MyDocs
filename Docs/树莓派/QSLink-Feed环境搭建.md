@@ -50,7 +50,7 @@ version: '3.7'
   services:
     homeassistant:
       container_name: homeassistant
-      image: homeassistant/raspberrypi4-homeassistant:latest
+      image: homeassistant/home-assistant:stable
       network_mode: "host"
       ports:
         - "8123:8123"
