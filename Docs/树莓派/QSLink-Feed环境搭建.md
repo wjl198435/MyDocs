@@ -86,6 +86,6 @@ StartLimitInterval
 ```
    
 ### 
-  Run this systemctl enable home-assistant.service
+  ```Run this systemctl enable home-assistant.service```
 ### 
-  Run this systemctl enable docker
+  ```Run this systemctl enable docker``
