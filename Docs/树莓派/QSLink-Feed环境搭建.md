@@ -32,7 +32,12 @@ pip --version
 
 sudo pip install docker-compose
 
- ###pip install homeassistant###
+```
+
+## pip 本地安装
+```
+ pip install aiohttp_cors
+ pip install homeassistant
 ``` 
 ## Updating Docker
  To update docker you can simply run the install again.
@@ -87,3 +92,13 @@ StartLimitInterval
    
 ### Run this systemctl enable home-assistant.service
 ### Run this systemctl enable docker
+
+
+## Raspberry Pi I2C配置
+### 启动I2C 接口
+sudo raspi-config
+
+### 安装I2C 扫描工具
+
+sudo apt-get install -y i2c-tools
+
